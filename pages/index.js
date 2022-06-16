@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
+import { Footer } from '../components/Footer';
 
 export default function Home() {
   return (
@@ -15,7 +16,9 @@ export default function Home() {
 
       <main className='bg-[url(/images/light.jpg)] h-screen w-screen bg-cover'></main>
 
-      <footer className={styles.footer}></footer>
+      <footer>
+        <Footer />
+      </footer>
     </div>
   );
 }
