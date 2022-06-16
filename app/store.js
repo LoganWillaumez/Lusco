@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { emptySplitApi } from './emptySplitApi';
+import { emptySplitApi } from './api/emptySplitApi';
 
 export const store = configureStore({
   reducer: {
