@@ -19,11 +19,17 @@ module.exports = {
         mooveUp: {
           from: { top: '50%' },
           '20%': { top: '60%' },
-          to: { top: '10%' },
+          to: { top: '15%' },
+        },
+        mooveDown: {
+          from: { top: '15%' },
+          '20%': { top: '10%' },
+          to: { top: '50%' },
         },
       },
       animation: {
         mooveUp: 'mooveUp 1s ease-in-out forwards',
+        mooveDown: 'mooveDown 1s ease-in-out forwards',
       },
     },
   },
