@@ -30,7 +30,11 @@ export const SearchBar = () => {
         }}
         className='flex gap-3 items-center w-[80vw] max-w-[500px]'
       >
-        <input type='text' className='rounded w-full' />
+        <input
+          placeholder='Search a term...'
+          type='text'
+          className='rounded w-full pl-3'
+        />
         <button type='submit' className='w-10 h-6 bg-white rounded'>
           <i className='fa-solid fa-magnifying-glass text-gray-400' />
         </button>
