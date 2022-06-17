@@ -7,9 +7,9 @@ const searchApi = emptySplitApi.injectEndpoints({
        * @param {*} param0
        * @returns
        */
-      query: (type, query, video) => {
+      query: ({ type, searchTerm, isVideo }) => {
         return {
-          url: `${type}/q=${query} ${video && 'video'}`,
+          url: `${type}/q=${searchTerm} ${type === 'video' && 'video'}`,
           method: 'GET',
           contentType: 'application/json',
           headers: {
@@ -23,3 +23,5 @@ const searchApi = emptySplitApi.injectEndpoints({
 });
 
 export const { useGetGoogleSearchMutation } = searchApi;
+export const searchDatas = (state) =>
+  searchApi.endpoints.getGoogleSearch.select()(state).data;
