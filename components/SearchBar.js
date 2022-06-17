@@ -55,10 +55,24 @@ export const SearchBar = ({ toggleClick, isClick, getGoogleSearch }) => {
         <button type='submit' className='w-10 h-6 bg-white rounded shadow-lg'>
           <i className='fa-solid fa-magnifying-glass text-gray-400' />
         </button>
-        <div className='flex gap-4 absolute -bottom-6  left-1/2 transform -translate-x-1/2 '>
-          {links.map(({ link, text }) => {
+        <div
+          className={` transition-all flex gap-4 absolute -bottom-6  left-1/2 transform -translate-x-1/2 opacity-0 ${
+            isClick && isFirstClick
+              ? 'opacity-100'
+              : isFirstClick
+              ? 'opacity-0'
+              : ''
+          }`}
+        >
+          {links.map(({ link, text }, i) => {
             return (
-              <button className='whitespace-nowrap' type='button'>
+              <button
+                key={link}
+                value={link}
+                onClick={(e) => setType(e.target.value)}
+                className={`whitespace-nowrap ${type === link && 'underline'}`}
+                type='button'
+              >
                 {text}
               </button>
             );
