@@ -3,8 +3,9 @@ import styles from '../styles/Home.module.css';
 import { Footer } from '../components/Footer';
 import { SearchBar } from '../components/SearchBar';
 import { Result } from '../components/Result';
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import { useGetGoogleSearchMutation } from '../app/api/getSearch';
+import { Spinner } from '../components/Spinner';
 
 export default function Home() {
   const [isClick, setIsClick] = useState(false);
@@ -43,7 +44,6 @@ export default function Home() {
           isLoadingSearch={isLoadingSearch}
         />
       </main>
-
       <footer>
         <Footer />
       </footer>

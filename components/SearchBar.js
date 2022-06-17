@@ -31,7 +31,7 @@ export const SearchBar = ({ toggleClick, isClick, getGoogleSearch }) => {
           e.preventDefault();
           getGoogleSearch({ type, searchTerm });
           setIsFirstClick(true);
-          toggleClick();
+          isClick === false && toggleClick();
         }}
         className='flex gap-3 items-center w-[80vw] max-w-[500px]'
       >
