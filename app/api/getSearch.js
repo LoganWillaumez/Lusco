@@ -9,8 +9,9 @@ const searchApi = emptySplitApi.injectEndpoints({
        */
       query: ({ type, searchTerm, page }) => {
         return {
-          url: `${type}/q=${searchTerm} ${type === 'video' && 'video'}`,
+          url: `${type}/q=${searchTerm}&num=100&filter=0&start=${page * 10}`,
           method: 'GET',
+          // params: { num: 100 },
           contentType: 'application/json',
           headers: {
             'x-rapidapi-host': 'google-search3.p.rapidapi.com',

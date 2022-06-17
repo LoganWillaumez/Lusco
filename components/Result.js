@@ -1,4 +1,4 @@
-import { Suspense, useEffect } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { searchDatas } from '../app/api/getSearch';
 import { Spinner } from './Spinner';
