@@ -23,3 +23,5 @@ const searchApi = emptySplitApi.injectEndpoints({
 });
 
 export const { useGetGoogleSearchMutation } = searchApi;
+export const searchDatas = (state) =>
+  searchApi.endpoints.getGoogleSearch.select()(state).data;
