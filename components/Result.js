@@ -57,7 +57,7 @@ export const Result = ({
       <p className='text-white absolute top-5 left-1/2 transform -translate-x-1/2 -translate-y-1/2'>
         {isLoadingSearch
           ? "It's loading, please wait..."
-          : `Page ${page / 10}/9`}
+          : `Result ${page} to ${page + 10}`}
       </p>
       <button
         onClick={() => toggleClick()}

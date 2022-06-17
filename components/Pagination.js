@@ -1,25 +1,27 @@
-export const Pagination = ({ page, setPage }) => {
+export const Pagination = ({ page, setPage, data }) => {
   return (
     <div className={`text-white text-center flex gap-3 m-auto`}>
-      {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((number, i) => {
-        return (
-          <button
-            type='button'
-            onClick={(e) => {
-              setPage(Number(e.target.value) * 10);
-            }}
-            value={number}
-            key={number}
-            className={`transition-all w-5 h-5 text-black  rounded-2xl flex items-center justify-center ${
-              page / 10 === number
-                ? 'bg-orange-300 text-white'
-                : 'bg-white text-black'
-            }`}
-          >
-            {number}
-          </button>
-        );
-      })}
+      {new Array(Math.floor(data.data.results.length / 10))
+        .fill([])
+        .map((number, i) => {
+          return (
+            <button
+              type='button'
+              onClick={(e) => {
+                setPage(Number(e.target.value) * 10);
+              }}
+              value={i}
+              key={i}
+              className={`transition-all w-5 h-5 text-black  rounded-2xl flex items-center justify-center ${
+                page / 10 === i
+                  ? 'bg-orange-400 text-gray-100'
+                  : 'bg-white text-black'
+              }`}
+            >
+              {i}
+            </button>
+          );
+        })}
     </div>
   );
 };
