@@ -1,18 +1,14 @@
 import { useState } from 'react';
 import { useGetGoogleSearchMutation } from '../app/api/getSearch';
 
-export const SearchBar = () => {
-  const [isClick, setIsClick] = useState(false);
+export const SearchBar = ({ toggleClick, isClick }) => {
   const [isFirstClick, setIsFirstClick] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [type, setType] = useState('search');
-  const toggleClick = () => {
-    setIsClick(!isClick);
-  };
   const [getGoogleSearch] = useGetGoogleSearchMutation();
   return (
     <div
-      className={`transition-all flex flex-col items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 gap-1 md:gap-2 lg:gap-3 text-white   ${
+      className={`transition-all  flex flex-col items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 gap-1 md:gap-2 lg:gap-3 text-white z-30 ${
         isClick && isFirstClick
           ? 'animate-mooveUp'
           : isFirstClick
@@ -33,7 +29,7 @@ export const SearchBar = () => {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          getGoogleSearch({ type, searchTerm });
+          // getGoogleSearch({ type, searchTerm });
           setIsFirstClick(true);
           toggleClick();
         }}

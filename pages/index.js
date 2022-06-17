@@ -3,8 +3,13 @@ import styles from '../styles/Home.module.css';
 import { Footer } from '../components/Footer';
 import { SearchBar } from '../components/SearchBar';
 import { Result } from '../components/Result';
+import { useState } from 'react';
 
 export default function Home() {
+  const [isClick, setIsClick] = useState(false);
+  const toggleClick = () => {
+    setIsClick(!isClick);
+  };
   return (
     <div className={styles.container}>
       <Head>
@@ -23,8 +28,8 @@ export default function Home() {
         />
       </Head>
       <main className='bg-[url(/images/light.jpg)] h-screen w-screen bg-cover flex justify-center items-center'>
-        <SearchBar />
-        <Result />
+        <SearchBar isClick={isClick} toggleClick={toggleClick} />
+        <Result isClick={isClick} toggleClick={toggleClick} />
       </main>
 
       <footer>

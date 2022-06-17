@@ -26,10 +26,20 @@ module.exports = {
           '20%': { top: '10%' },
           to: { top: '50%' },
         },
+        fadeIn: {
+          from: { top: '0%' },
+          to: { top: '100%' },
+        },
+        fadeOut: {
+          from: { top: '100%' },
+          to: { top: '0%' },
+        },
       },
       animation: {
         mooveUp: 'mooveUp 1s ease-in-out forwards',
         mooveDown: 'mooveDown 1s ease-in-out forwards',
+        fadeInResult: 'fadeIn 1s ease-in-out forwards 0.3s',
+        fadeOutResult: 'fadeOut 1s ease-in-out forwards',
       },
     },
   },

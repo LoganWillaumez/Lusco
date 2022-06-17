@@ -7,7 +7,7 @@ const searchApi = emptySplitApi.injectEndpoints({
        * @param {*} param0
        * @returns
        */
-      query: ({ type, searchTerm, isVideo }) => {
+      query: ({ type, searchTerm, page }) => {
         return {
           url: `${type}/q=${searchTerm} ${type === 'video' && 'video'}`,
           method: 'GET',
@@ -15,6 +15,7 @@ const searchApi = emptySplitApi.injectEndpoints({
           headers: {
             'x-rapidapi-host': 'google-search3.p.rapidapi.com',
             'x-rapidapi-key': process.env.NEXT_PUBLIC_KEY,
+            'X-Proxy-Location': 'FR',
           },
         };
       },
