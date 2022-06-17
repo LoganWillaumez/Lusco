@@ -4,9 +4,12 @@ import { Footer } from '../components/Footer';
 import { SearchBar } from '../components/SearchBar';
 import { Result } from '../components/Result';
 import { useState } from 'react';
+import { useGetGoogleSearchMutation } from '../app/api/getSearch';
 
 export default function Home() {
   const [isClick, setIsClick] = useState(false);
+  const [getGoogleSearch, { data: dataSearch, isLoading: isLoadingSearch }] =
+    useGetGoogleSearchMutation();
   const toggleClick = () => {
     setIsClick(!isClick);
   };
@@ -28,8 +31,17 @@ export default function Home() {
         />
       </Head>
       <main className='bg-[url(/images/light.jpg)] h-screen w-screen bg-cover flex justify-center items-center'>
-        <SearchBar isClick={isClick} toggleClick={toggleClick} />
-        <Result isClick={isClick} toggleClick={toggleClick} />
+        <SearchBar
+          isClick={isClick}
+          toggleClick={toggleClick}
+          getGoogleSearch={getGoogleSearch}
+        />
+        <Result
+          dataSearch={dataSearch}
+          isClick={isClick}
+          toggleClick={toggleClick}
+          isLoadingSearch={isLoadingSearch}
+        />
       </main>
 
       <footer>

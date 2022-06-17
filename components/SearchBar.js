@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useGetGoogleSearchMutation } from '../app/api/getSearch';
 
-export const SearchBar = ({ toggleClick, isClick }) => {
+export const SearchBar = ({ toggleClick, isClick, getGoogleSearch }) => {
   const [isFirstClick, setIsFirstClick] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [type, setType] = useState('search');
-  const [getGoogleSearch] = useGetGoogleSearchMutation();
+
   return (
     <div
       className={`transition-all  flex flex-col items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 gap-1 md:gap-2 lg:gap-3 text-white z-30 ${
@@ -29,7 +29,7 @@ export const SearchBar = ({ toggleClick, isClick }) => {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          // getGoogleSearch({ type, searchTerm });
+          getGoogleSearch({ type, searchTerm });
           setIsFirstClick(true);
           toggleClick();
         }}
