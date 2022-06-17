@@ -7,9 +7,10 @@ const searchApi = emptySplitApi.injectEndpoints({
        * @param {*} param0
        * @returns
        */
-      query: ({ type, searchTerm, page }) => {
+      query: ({ type, searchTerm }) => {
         return {
-          url: `${type}/q=${searchTerm}&num=100&filter=0&start=${page * 10}`,
+          url: `${type}/q=${searchTerm}&num=100`,
+          // url: `${type}/q=${searchTerm}&num=100&filter=0&start=${page * 10}`,
           method: 'GET',
           // params: { num: 100 },
           contentType: 'application/json',

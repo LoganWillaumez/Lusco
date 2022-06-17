@@ -9,6 +9,7 @@ import { Spinner } from '../components/Spinner';
 
 export default function Home() {
   const [isClick, setIsClick] = useState(false);
+  const [page, setPage] = useState(0);
   const [getGoogleSearch, { data: dataSearch, isLoading: isLoadingSearch }] =
     useGetGoogleSearchMutation();
   const toggleClick = () => {
@@ -36,12 +37,16 @@ export default function Home() {
           isClick={isClick}
           toggleClick={toggleClick}
           getGoogleSearch={getGoogleSearch}
+          page={page}
+          setPage={setPage}
         />
         <Result
           dataSearch={dataSearch}
           isClick={isClick}
           toggleClick={toggleClick}
           isLoadingSearch={isLoadingSearch}
+          page={page}
+          setPage={setPage}
         />
       </main>
       <footer>

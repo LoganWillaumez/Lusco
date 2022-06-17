@@ -2,24 +2,35 @@ import { Suspense, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { searchDatas } from '../app/api/getSearch';
 import { Spinner } from './Spinner';
-// import { data } from '../data/tempData';
+import { data } from '../data/tempData';
+import { Pagination } from './Pagination';
 export const Result = ({
   isClick,
   toggleClick,
-  dataSearch,
+  // dataSearch,
   isLoadingSearch,
+  page,
+  setPage,
 }) => {
+  const [dataFilter, setDataFilter] = useState([]);
+  useEffect(() => {
+    const dataPage = data.data.results.slice(
+      page === 0 ? 0 : page,
+      page === 0 ? 10 : page + 10
+    );
+    setDataFilter(dataPage);
+  }, [page]);
+
   return (
     <div
       className={`transition-all  relative mt-[15vh] bg-gray-900 rounded bg-opacity-60 flex flex-col gap-5 overflow-scroll p-10 pt-16  h-[70vh] w-[80vw] ${
         isClick ? 'animate-fadeOutResult' : 'animate-fadeInResult'
       }`}
-      // h-[70vh]  w-[80vw]
     >
       {isLoadingSearch ? (
         <Spinner />
       ) : (
-        dataSearch?.results.map((data, i) => {
+        dataFilter?.map((data, i) => {
           return (
             <div className='flex flex-col' key={data + i}>
               <a
@@ -46,7 +57,7 @@ export const Result = ({
       <p className='text-white absolute top-5 left-1/2 transform -translate-x-1/2 -translate-y-1/2'>
         {isLoadingSearch
           ? "It's loading, please wait..."
-          : `${dataSearch?.results.length} results found`}
+          : `Page ${page / 10}/9`}
       </p>
       <button
         onClick={() => toggleClick()}
@@ -55,6 +66,7 @@ export const Result = ({
       >
         <i className=' fa-solid fa-x'></i>
       </button>
+      <Pagination page={page} data={data} setPage={setPage} />
     </div>
   );
 };

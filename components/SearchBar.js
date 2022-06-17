@@ -30,7 +30,7 @@ export const SearchBar = ({ toggleClick, isClick, getGoogleSearch }) => {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          searchTerm !== '' && getGoogleSearch({ type, searchTerm, page });
+          // searchTerm !== '' && getGoogleSearch({ type, searchTerm, page });
           searchTerm !== '' && setIsFirstClick(true);
           isClick === false && searchTerm !== '' && toggleClick();
         }}
