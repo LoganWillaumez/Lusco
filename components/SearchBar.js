@@ -7,11 +7,18 @@ export const SearchBar = ({ toggleClick, isClick, getGoogleSearch }) => {
   const [page, setPage] = useState(0);
 
   const [type, setType] = useState('search');
+
+  const links = [
+    { link: 'search', text: '🔎  All' },
+    { link: 'news', text: '📰  News' },
+    { link: 'images', text: '📸  Images' },
+    { link: 'videos', text: '📺  Videos' },
+  ];
   return (
     <div
       className={`transition-all  flex flex-col items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 gap-1 md:gap-2 lg:gap-3 text-white z-30 ${
         isClick && isFirstClick
-          ? 'animate-mooveUp'
+          ? 'animate-mooveUp gap-0 lg:gap-0'
           : isFirstClick
           ? 'animate-mooveDown'
           : ''
@@ -45,10 +52,18 @@ export const SearchBar = ({ toggleClick, isClick, getGoogleSearch }) => {
             setSearchTerm(e.target.value);
           }}
         />
-
         <button type='submit' className='w-10 h-6 bg-white rounded shadow-lg'>
           <i className='fa-solid fa-magnifying-glass text-gray-400' />
         </button>
+        <div className='flex gap-4 absolute -bottom-6  left-1/2 transform -translate-x-1/2 '>
+          {links.map(({ link, text }) => {
+            return (
+              <button className='whitespace-nowrap' type='button'>
+                {text}
+              </button>
+            );
+          })}
+        </div>
       </form>
     </div>
   );

@@ -19,11 +19,11 @@ module.exports = {
         mooveUp: {
           from: { top: '50%' },
           '20%': { top: '60%' },
-          to: { top: '15%' },
+          to: { top: '12%' },
         },
         mooveDown: {
-          from: { top: '15%' },
-          '20%': { top: '10%' },
+          from: { top: '12%' },
+          '20%': { top: '8%' },
           to: { top: '50%' },
         },
         fadeIn: {
