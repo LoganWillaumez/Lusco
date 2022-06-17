@@ -37,6 +37,13 @@ export const Result = ({ isClick, toggleClick }) => {
       <p className='text-white absolute top-5 left-1/2 transform -translate-x-1/2 -translate-y-1/2'>
         {data.data.results.length} results found
       </p>
+      <button
+        onClick={() => toggleClick()}
+        type='button'
+        className='absolute top-5 right-5 text-white'
+      >
+        <i className=' fa-solid fa-x'></i>
+      </button>
     </div>
   );
 };
