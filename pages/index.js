@@ -2,8 +2,19 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import { Footer } from '../components/Footer';
 import { SearchBar } from '../components/SearchBar';
+import { Result } from '../components/Result';
+import { Suspense, useState } from 'react';
+import { useGetGoogleSearchMutation } from '../app/api/getSearch';
+import { Spinner } from '../components/Spinner';
 
 export default function Home() {
+  const [isClick, setIsClick] = useState(false);
+  const [page, setPage] = useState(0);
+  const [getGoogleSearch, { data: dataSearch, isLoading: isLoadingSearch }] =
+    useGetGoogleSearchMutation();
+  const toggleClick = () => {
+    setIsClick(!isClick);
+  };
   return (
     <div className={styles.container}>
       <Head>
@@ -22,9 +33,22 @@ export default function Home() {
         />
       </Head>
       <main className='bg-[url(/images/light.jpg)] h-screen w-screen bg-cover flex justify-center items-center'>
-        <SearchBar />
+        <SearchBar
+          isClick={isClick}
+          toggleClick={toggleClick}
+          getGoogleSearch={getGoogleSearch}
+          page={page}
+          setPage={setPage}
+        />
+        <Result
+          dataSearch={dataSearch}
+          isClick={isClick}
+          toggleClick={toggleClick}
+          isLoadingSearch={isLoadingSearch}
+          page={page}
+          setPage={setPage}
+        />
       </main>
-
       <footer>
         <Footer />
       </footer>

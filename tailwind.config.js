@@ -19,17 +19,27 @@ module.exports = {
         mooveUp: {
           from: { top: '50%' },
           '20%': { top: '60%' },
-          to: { top: '15%' },
+          to: { top: '12%' },
         },
         mooveDown: {
-          from: { top: '15%' },
-          '20%': { top: '10%' },
+          from: { top: '12%' },
+          '20%': { top: '8%' },
           to: { top: '50%' },
+        },
+        fadeIn: {
+          from: { top: '0%' },
+          to: { top: '100%' },
+        },
+        fadeOut: {
+          from: { top: '100%' },
+          to: { top: '0%' },
         },
       },
       animation: {
         mooveUp: 'mooveUp 1s ease-in-out forwards',
         mooveDown: 'mooveDown 1s ease-in-out forwards',
+        fadeInResult: 'fadeIn 1s ease-in-out forwards 0.3s',
+        fadeOutResult: 'fadeOut 1s ease-in-out forwards',
       },
     },
   },
