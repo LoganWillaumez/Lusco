@@ -28,7 +28,7 @@ export const SearchBar = ({ toggleClick, isClick, getGoogleSearch }) => {
         Lusco
       </h1>
       <h2
-        className={`transition-all duration-400 text-[0.6rem] md:text-[0.8rem] lg:text-[1rem] ${
+        className={`transition-all  duration-400 text-[0.6rem] md:text-[0.8rem] lg:text-[1rem] ${
           isClick && isFirstClick && 'opacity-0 h-0'
         } `}
       >
@@ -56,7 +56,7 @@ export const SearchBar = ({ toggleClick, isClick, getGoogleSearch }) => {
           <i className='fa-solid fa-magnifying-glass text-gray-400' />
         </button>
         <div
-          className={` transition-all flex gap-4 absolute -bottom-6  left-1/2 transform -translate-x-1/2 opacity-0 ${
+          className={` transition-all flex gap-4 absolute -bottom-6 left-1/2 transform -translate-x-1/2 opacity-0 ${
             isClick && isFirstClick
               ? 'opacity-100'
               : isFirstClick
@@ -70,7 +70,9 @@ export const SearchBar = ({ toggleClick, isClick, getGoogleSearch }) => {
                 key={link}
                 value={link}
                 onClick={(e) => setType(e.target.value)}
-                className={`whitespace-nowrap ${type === link && 'underline'}`}
+                className={` duration-200 whitespace-nowrap transition-all ${
+                  type === link && 'underline translate-y-2'
+                }`}
                 type='button'
               >
                 {text}

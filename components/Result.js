@@ -23,7 +23,7 @@ export const Result = ({
 
   return (
     <div
-      className={`transition-all  relative mt-[15vh] bg-gray-900 rounded bg-opacity-60 flex flex-col gap-5 overflow-scroll p-10 pt-16  h-[70vh] w-[80vw] ${
+      className={`transition-all  relative mt-[15vh] bg-gray-900 rounded bg-opacity-60 flex flex-col gap-5 overflow-y-scroll overflow-x-hidden p-10 pt-16  h-[70vh] w-[80vw] ${
         isClick ? 'animate-fadeOutResult' : 'animate-fadeInResult'
       }`}
     >
@@ -37,7 +37,7 @@ export const Result = ({
                 href={data.link}
                 target='_blank'
                 rel='noreferrer'
-                className='text-white'
+                className='text-white cursor-pointer'
               >
                 {data.cite.domain}
               </a>
@@ -45,7 +45,7 @@ export const Result = ({
                 href={data.link}
                 target='_blank'
                 rel='noreferrer'
-                className='text-blue-300 font-bold'
+                className='text-blue-300 font-bold cursor-pointer'
               >
                 {data.title}
               </a>
