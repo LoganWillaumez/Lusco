@@ -1,14 +1,22 @@
-export const Pagination = ({ page, setPage, data }) => {
+import { useDispatch, useSelector } from 'react-redux';
+import { handleChange } from '../app/api/SearchSlice';
+
+export const Pagination = ({ data }) => {
+  const dispatch = useDispatch();
+  const { page } = useSelector((state) => state.search);
   return (
     <div className={`text-white text-center flex gap-3 m-auto`}>
-      {new Array(Math.floor(data.data.results.length / 10))
+      {/* {new Array(Math.floor(data?.results.length / 10))
         .fill([])
         .map((number, i) => {
           return (
             <button
               type='button'
               onClick={(e) => {
-                setPage(Number(e.target.value) * 10);
+                dispatch(handleChange({
+                  name:page,
+                  value:Number(e.target.value) * 10
+                }))
               }}
               value={i}
               key={i}
@@ -21,7 +29,7 @@ export const Pagination = ({ page, setPage, data }) => {
               {i}
             </button>
           );
-        })}
+        })} */}
     </div>
   );
 };

@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { toggleClick, handleChange } from '../app/api/SearchSlice';
 import { useGetGoogleSearchMutation } from '../app/api/getSearch';
-
-export const SearchBar = ({ toggleClick, isClick, getGoogleSearch }) => {
+export const SearchBar = ({ getGoogleSearch }) => {
   const [isFirstClick, setIsFirstClick] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
-  const [page, setPage] = useState(0);
-
-  const [type, setType] = useState('search');
-
+  const { isClick, type } = useSelector((state) => state.search);
+  const dispatch = useDispatch();
   const links = [
     { link: 'search', text: '🔎  All' },
     { link: 'news', text: '📰  News' },
@@ -37,9 +36,9 @@ export const SearchBar = ({ toggleClick, isClick, getGoogleSearch }) => {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          // searchTerm !== '' && getGoogleSearch({ type, searchTerm, page });
+          searchTerm !== '' && getGoogleSearch({ type, searchTerm });
           searchTerm !== '' && setIsFirstClick(true);
-          isClick === false && searchTerm !== '' && toggleClick();
+          isClick === false && searchTerm !== '' && dispatch(toggleClick());
         }}
         className='flex gap-3 items-center w-[80vw] max-w-[500px]'
       >
@@ -69,7 +68,12 @@ export const SearchBar = ({ toggleClick, isClick, getGoogleSearch }) => {
               <button
                 key={link}
                 value={link}
-                onClick={(e) => setType(e.target.value)}
+                onClick={(e) => {
+                  const typeNew = e.target.value;
+                  dispatch(handleChange({ name: 'type', value: typeNew }));
+                  searchTerm !== '' &&
+                    getGoogleSearch({ type: typeNew, searchTerm });
+                }}
                 className={`duration-200 whitespace-nowrap transition-all ${
                   type === link && 'underline translate-y-1'
                 }`}
