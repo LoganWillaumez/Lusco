@@ -47,7 +47,7 @@ export const SearchBar = ({ toggleClick, isClick, getGoogleSearch }) => {
           placeholder='Search a term...'
           type='text'
           value={searchTerm}
-          className=' relative rounded w-full pl-3 shadow-lg text-black'
+          className='relative rounded w-full pl-3 shadow-lg text-black'
           onChange={(e) => {
             setSearchTerm(e.target.value);
           }}
@@ -56,7 +56,7 @@ export const SearchBar = ({ toggleClick, isClick, getGoogleSearch }) => {
           <i className='fa-solid fa-magnifying-glass text-gray-400' />
         </button>
         <div
-          className={` transition-all flex gap-4 absolute -bottom-6 left-1/2 transform -translate-x-1/2 opacity-0 ${
+          className={` transition-all flex gap-4 absolute -bottom-8 left-1/2 transform -translate-x-1/2 opacity-0 ${
             isClick && isFirstClick
               ? 'opacity-100'
               : isFirstClick
@@ -70,8 +70,8 @@ export const SearchBar = ({ toggleClick, isClick, getGoogleSearch }) => {
                 key={link}
                 value={link}
                 onClick={(e) => setType(e.target.value)}
-                className={` duration-200 whitespace-nowrap transition-all ${
-                  type === link && 'underline translate-y-2'
+                className={`duration-200 whitespace-nowrap transition-all ${
+                  type === link && 'underline translate-y-1'
                 }`}
                 type='button'
               >
