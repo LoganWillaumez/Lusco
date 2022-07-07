@@ -19,7 +19,7 @@ export const Result = () => {
       page === 0 ? 10 : page + 10
     );
     setDataFilter(dataPage);
-  }, [page]);
+  }, [page, dataSearch]);
 
   return (
     <div
@@ -31,6 +31,13 @@ export const Result = () => {
           : 'animate-fadeInResult'
       }`}
     >
+      {isLoadingSearch ? (
+        <Spinner />
+      ) : type === 'search' ? (
+        <ResultSearch datas={dataFilter} />
+      ) : (
+        ''
+      )}
       {/* {searchDatas?.map((data, i) => {
         return (
           <div className='flex flex-col' key={data + i}>
