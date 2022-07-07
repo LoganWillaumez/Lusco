@@ -73,7 +73,7 @@ export const Result = () => {
       >
         <i className=' fa-solid fa-x'></i>
       </button>
-      {/* <Pagination page={page} data={dataFilter}  /> */}
+      <Pagination datas={dataSearch} />
     </div>
   );
 };
