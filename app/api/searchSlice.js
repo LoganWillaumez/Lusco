@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   page: 0,
   type: 'search',
-  isClick: false,
+  isClick: null,
 };
 
 export const searchSlice = createSlice({
@@ -11,7 +11,8 @@ export const searchSlice = createSlice({
   initialState,
   reducers: {
     toggleClick: (state, action) => {
-      state.isClick = !state.isClick;
+      if (state.isClick !== null) state.isClick = !state.isClick;
+      if (state.isClick === null) state.isClick = true;
     },
     handleChange: (state, action) => {
       const { name, value } = action.payload;

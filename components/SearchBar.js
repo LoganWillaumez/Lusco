@@ -16,10 +16,10 @@ export const SearchBar = ({ getGoogleSearch }) => {
   return (
     <div
       className={`transition-all  flex flex-col items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 gap-1 md:gap-2 lg:gap-3 text-white z-30 ${
-        isClick && isFirstClick
-          ? 'animate-mooveUp gap-0 lg:gap-0'
-          : isFirstClick
-          ? 'animate-mooveDown'
+        isClick !== null
+          ? isClick
+            ? 'animate-mooveUp gap-0 lg:gap-0'
+            : 'animate-mooveDown'
           : ''
       }`}
     >
@@ -28,7 +28,7 @@ export const SearchBar = ({ getGoogleSearch }) => {
       </h1>
       <h2
         className={`transition-all  duration-400 text-[0.6rem] md:text-[0.8rem] lg:text-[1rem] ${
-          isClick && isFirstClick && 'opacity-0 h-0'
+          isClick !== null ? isClick && 'opacity-0 h-0' : ''
         } `}
       >
         Personnal project using google API and Next
@@ -38,7 +38,7 @@ export const SearchBar = ({ getGoogleSearch }) => {
           e.preventDefault();
           searchTerm !== '' && getGoogleSearch({ type, searchTerm });
           searchTerm !== '' && setIsFirstClick(true);
-          isClick === false && searchTerm !== '' && dispatch(toggleClick());
+          if (isClick === false || searchTerm !== '') dispatch(toggleClick());
         }}
         className='flex gap-3 items-center w-[80vw] max-w-[500px]'
       >
