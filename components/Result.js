@@ -23,7 +23,7 @@ export const Result = () => {
 
   return (
     <div
-      className={`transition-all relative mt-[15vh] bg-gray-900 rounded bg-opacity-60 flex flex-col gap-5 overflow-y-scroll overflow-x-hidden p-10 pt-16 h-[70vh] w-[80vw] top-[100%] ${
+      className={`transition-all relative mt-[15vh] bg-gray-900 rounded bg-opacity-60 flex flex-col gap-5 overflow-hidden p-10 pt-16 h-[70vh] w-[80vw] top-[100%] ${
         isClick === null
           ? ''
           : isClick
@@ -34,7 +34,9 @@ export const Result = () => {
       {isLoadingSearch ? (
         <Spinner />
       ) : type === 'search' ? (
-        <ResultSearch datas={dataFilter} />
+        <div className='h-[90%] overflow-scroll scrollbar-hide '>
+          <ResultSearch datas={dataFilter} />
+        </div>
       ) : (
         ''
       )}
