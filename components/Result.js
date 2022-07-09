@@ -7,14 +7,24 @@ import { Pagination } from './Pagination';
 import { ResultSearch } from './ResultSearch';
 import { toggleClick } from '../app/api/SearchSlice';
 import { ResultAll } from './ResultAll';
+import { ResultImages } from './ResultImages';
 export const Result = () => {
   const dispatch = useDispatch();
   const [getGoogleSearch, { data: dataSearch, isLoading: isLoadingSearch }] =
     useGetGoogleSearchMutation({ fixedCacheKey: 'myCacheKey' });
   const { isClick, page, type } = useSelector((state) => state.search);
   const [dataFilter, setDataFilter] = useState([]);
+  console.log(`🚀 ~ dataFilter`, dataFilter);
+  const [dataRaw, setDataRaw] = useState([]);
   useEffect(() => {
-    const dataPage = dataSearch?.results.slice(
+    const dataQuery =
+      type === 'search'
+        ? dataSearch?.results
+        : type === 'image'
+        ? dataSearch?.image_results
+        : [];
+    setDataRaw(dataQuery);
+    const dataPage = dataQuery?.slice(
       page === 0 ? 0 : page,
       page === 0 ? 10 : page + 10
     );
@@ -34,8 +44,12 @@ export const Result = () => {
       {isLoadingSearch ? (
         <Spinner />
       ) : type === 'search' ? (
-        <div className='h-[90%] overflow-scroll scrollbar-hide '>
+        <div className='h-[90%] overflow-scroll scrollbar-hide'>
           <ResultSearch datas={dataFilter} />
+        </div>
+      ) : type === 'image' ? (
+        <div className='h-[90%] overflow-scroll scrollbar-hide'>
+          <ResultImages datas={dataFilter} />
         </div>
       ) : (
         ''
@@ -66,7 +80,11 @@ export const Result = () => {
       <p className='text-white absolute top-5 left-1/2 transform -translate-x-1/2 -translate-y-1/2'>
         {isLoadingSearch
           ? "It's loading, please wait..."
-          : `Result ${page} to ${page + 10}`}
+          : `Page ${page} to ${
+              Math.floor(dataRaw?.length / 10 - 1) === 1
+                ? '0'
+                : Math.floor(dataRaw?.length / 10 - 1)
+            }`}
       </p>
       <button
         onClick={() => dispatch(toggleClick())}

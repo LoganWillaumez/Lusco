@@ -9,8 +9,7 @@ export const SearchBar = ({ getGoogleSearch }) => {
   const dispatch = useDispatch();
   const links = [
     { link: 'search', text: '🔎  All' },
-    { link: 'news', text: '📰  News' },
-    { link: 'images', text: '📸  Images' },
+    { link: 'image', text: '📸  Images' },
     { link: 'videos', text: '📺  Videos' },
   ];
   return (
