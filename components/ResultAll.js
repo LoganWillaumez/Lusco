@@ -9,29 +9,6 @@ export const ResultAll = () => {
         isClick ? 'animate-fadeInResult' : 'animate-fadeOutResult'
       }`}
     >
-      {/* {searchDatas?.map((data, i) => {
-        return (
-          <div className='flex flex-col' key={data + i}>
-            <a
-              href={data.link}
-              target='_blank'
-              rel='noreferrer'
-              className='text-white cursor-pointer'
-            >
-              {data.cite.domain}
-            </a>
-            <a
-              href={data.link}
-              target='_blank'
-              rel='noreferrer'
-              className='text-blue-300 font-bold cursor-pointer'
-            >
-              {data.title}
-            </a>
-            <p className='text-white text-base'>{data.description}</p>
-          </div>
-        );
-      })} */}
       <p className='text-white absolute top-5 left-1/2 transform -translate-x-1/2 -translate-y-1/2'>
         {isLoadingSearch ? 'Please wait...' : `Result ${page} to ${page + 10}`}
       </p>

@@ -97,6 +97,3 @@ export const Result = () => {
     </div>
   );
 };
-{
-  /* {isLoadingSearch ? <Spinner /> : <ResultSearch dataFilter={dataFilter} />} */
-}
