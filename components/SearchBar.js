@@ -70,6 +70,12 @@ export const SearchBar = ({ getGoogleSearch }) => {
                 onClick={(e) => {
                   const typeNew = e.target.value;
                   dispatch(handleChange({ name: 'type', value: typeNew }));
+                  dispatch(
+                    handleChange({
+                      name: 'page',
+                      value: 0,
+                    })
+                  );
                   searchTerm !== '' &&
                     getGoogleSearch({ type: typeNew, searchTerm });
                 }}

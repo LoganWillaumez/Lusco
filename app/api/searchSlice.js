@@ -20,7 +20,6 @@ export const searchSlice = createSlice({
     },
     changePage: (state, action) => {
       const { change } = action.payload;
-      console.log(`🚀 ~ change`, change);
       state.page = change === 'increment' ? state.page + 1 : state.page - 1;
     },
   },

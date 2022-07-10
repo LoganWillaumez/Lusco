@@ -38,6 +38,7 @@ export const Pagination = ({ datas, dataRaw }) => {
                 change: 'increment',
               })
             );
+            dispatch(resetPage());
           }}
         >
           {'>'}

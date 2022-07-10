@@ -25,8 +25,8 @@ export const Result = () => {
         : [];
     setDataRaw(dataQuery);
     const dataPage = dataQuery?.slice(
-      page === 0 ? 0 : page,
-      page === 0 ? 10 : page + 10
+      page === 0 ? 0 : page * 10,
+      page === 0 ? 10 : (page + 1) * 10
     );
     setDataFilter(dataPage);
   }, [page, dataSearch]);
