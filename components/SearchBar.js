@@ -10,7 +10,7 @@ export const SearchBar = ({ getGoogleSearch }) => {
   const links = [
     { link: 'search', text: '🔎  All' },
     { link: 'image', text: '📸  Images' },
-    { link: 'videos', text: '📺  Videos' },
+    { link: 'video', text: '📺  Videos' },
   ];
   return (
     <div

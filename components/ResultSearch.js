@@ -28,7 +28,7 @@ export const ResultSearch = ({ datas }) => {
             >
               {data.title}
             </a>
-            <p className='text-white text-base'>
+            <p className='text-white text-xs md:text-base'>
               {truncateString(data.description, 100)}
             </p>
           </div>

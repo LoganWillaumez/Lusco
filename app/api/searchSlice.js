@@ -18,8 +18,13 @@ export const searchSlice = createSlice({
       const { name, value } = action.payload;
       state[name] = value;
     },
+    changePage: (state, action) => {
+      const { change } = action.payload;
+      console.log(`🚀 ~ change`, change);
+      state.page = change === 'increment' ? state.page + 1 : state.page - 1;
+    },
   },
 });
 
-export const { toggleClick, handleChange } = searchSlice.actions;
+export const { toggleClick, handleChange, changePage } = searchSlice.actions;
 export default searchSlice.reducer;

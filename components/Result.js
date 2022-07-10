@@ -8,17 +8,17 @@ import { ResultSearch } from './ResultSearch';
 import { toggleClick } from '../app/api/SearchSlice';
 import { ResultAll } from './ResultAll';
 import { ResultImages } from './ResultImages';
+import { ResultVideos } from './ResultVideos';
 export const Result = () => {
   const dispatch = useDispatch();
   const [getGoogleSearch, { data: dataSearch, isLoading: isLoadingSearch }] =
     useGetGoogleSearchMutation({ fixedCacheKey: 'myCacheKey' });
   const { isClick, page, type } = useSelector((state) => state.search);
   const [dataFilter, setDataFilter] = useState([]);
-  console.log(`🚀 ~ dataFilter`, dataFilter);
   const [dataRaw, setDataRaw] = useState([]);
   useEffect(() => {
     const dataQuery =
-      type === 'search'
+      type === 'search' || type === 'video'
         ? dataSearch?.results
         : type === 'image'
         ? dataSearch?.image_results
@@ -51,32 +51,13 @@ export const Result = () => {
         <div className='h-[90%] overflow-scroll scrollbar-hide'>
           <ResultImages datas={dataFilter} />
         </div>
+      ) : type === 'video' ? (
+        <div className='h-[90%] overflow-scroll scrollbar-hide'>
+          <ResultVideos datas={dataFilter} />
+        </div>
       ) : (
         ''
       )}
-      {/* {searchDatas?.map((data, i) => {
-        return (
-          <div className='flex flex-col' key={data + i}>
-            <a
-              href={data.link}
-              target='_blank'
-              rel='noreferrer'
-              className='text-white cursor-pointer'
-            >
-              {data.cite.domain}
-            </a>
-            <a
-              href={data.link}
-              target='_blank'
-              rel='noreferrer'
-              className='text-blue-300 font-bold cursor-pointer'
-            >
-              {data.title}
-            </a>
-            <p className='text-white text-base'>{data.description}</p>
-          </div>
-        );
-      })} */}
       <p className='text-white absolute top-5 left-1/2 transform -translate-x-1/2 -translate-y-1/2'>
         {isLoadingSearch
           ? "It's loading, please wait..."
@@ -93,7 +74,7 @@ export const Result = () => {
       >
         <i className=' fa-solid fa-x'></i>
       </button>
-      <Pagination datas={dataSearch} />
+      <Pagination dataRaw={dataRaw} datas={dataSearch} />
     </div>
   );
 };
