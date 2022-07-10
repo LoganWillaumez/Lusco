@@ -3,14 +3,8 @@ import styles from '../styles/Home.module.css';
 import { Footer } from '../components/Footer';
 import { SearchBar } from '../components/SearchBar';
 import { Result } from '../components/Result';
-import { Suspense, useState } from 'react';
-import { useGetGoogleSearchMutation } from '../app/api/getSearch';
-import { Spinner } from '../components/Spinner';
-import { useDispatch } from 'react-redux';
 
 export default function Home() {
-  const [getGoogleSearch, { data: dataSearch, isLoading: isLoadingSearch }] =
-    useGetGoogleSearchMutation({ fixedCacheKey: 'myCacheKey' });
   return (
     <div className={styles.container}>
       <Head>
@@ -29,7 +23,7 @@ export default function Home() {
         />
       </Head>
       <main className='bg-[url(/images/light.jpg)] h-screen w-screen bg-cover flex justify-center items-center'>
-        <SearchBar getGoogleSearch={getGoogleSearch} />
+        <SearchBar />
         <Result />
       </main>
       <footer>
