@@ -26,11 +26,11 @@ module.exports = {
           '20%': { top: '8%' },
           to: { top: '50%' },
         },
-        fadeIn: {
+        fadeOut: {
           from: { top: '0%' },
           to: { top: '100%' },
         },
-        fadeOut: {
+        fadeIn: {
           from: { top: '100%' },
           to: { top: '0%' },
         },
@@ -38,11 +38,11 @@ module.exports = {
       animation: {
         mooveUp: 'mooveUp 1s ease-in-out forwards',
         mooveDown: 'mooveDown 1s ease-in-out forwards',
-        fadeInResult: 'fadeIn 1s ease-in-out forwards 0.3s',
-        fadeOutResult: 'fadeOut 1s ease-in-out forwards',
+        fadeOutResult: 'fadeIn 1s ease-in-out forwards 0.3s',
+        fadeInResult: 'fadeOut 1s ease-in-out forwards',
       },
     },
   },
 
-  plugins: [],
+  plugins: [require('tailwind-scrollbar-hide')],
 };

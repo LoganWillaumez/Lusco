@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import { emptySplitApi } from '../api/emptySplitApi';
 const searchApi = emptySplitApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -26,5 +27,3 @@ const searchApi = emptySplitApi.injectEndpoints({
 });
 
 export const { useGetGoogleSearchMutation } = searchApi;
-export const searchDatas = (state) =>
-  searchApi.endpoints.getGoogleSearch.select()(state).data;
