@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { changePage, handleChange, resetPage } from '../app/api/SearchSlice';
+import { changePage } from '../app/api/SearchSlice';
 
 export const Pagination = ({ datas, dataRaw }) => {
   const dispatch = useDispatch();
@@ -43,34 +43,6 @@ export const Pagination = ({ datas, dataRaw }) => {
           {'>'}
         </button>
       </div>
-      {/* {datas?.results
-        ? new Array(Math.floor(datas?.results.length / 10))
-            .fill([])
-            .map((number, i) => {
-              return (
-                <button
-                  type='button'
-                  onClick={(e) => {
-                    dispatch(
-                      handleChange({
-                        name: 'page',
-                        value: Number(e.target.value),
-                      })
-                    );
-                  }}
-                  value={i}
-                  key={i}
-                  className={`transition-all w-5 h-5 text-black  rounded-2xl flex items-center justify-center ${
-                    page === i
-                      ? 'bg-orange-400 text-gray-100'
-                      : 'bg-white text-black'
-                  }`}
-                >
-                  {i}
-                </button>
-              );
-            })
-        : ''} */}
     </div>
   );
 };

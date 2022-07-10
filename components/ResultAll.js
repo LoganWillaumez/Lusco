@@ -1,5 +1,4 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { searchDatas } from '../app/api/getSearch';
 export const ResultAll = () => {
   const dispatch = useDispatch();
   const { isClick, page } = useSelector((state) => state.search);
@@ -19,7 +18,6 @@ export const ResultAll = () => {
       >
         <i className=' fa-solid fa-x'></i>
       </button>
-      {/* <Pagination page={page} data={dataFilter}  /> */}
     </div>
   );
 };

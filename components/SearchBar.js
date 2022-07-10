@@ -1,10 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleClick, handleChange, resetPage } from '../app/api/SearchSlice';
 import { useGetGoogleSearchMutation } from '../app/api/getSearch';
-export const SearchBar = ({ getGoogleSearch }) => {
+export const SearchBar = () => {
   const [isFirstClick, setIsFirstClick] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
+  const [getGoogleSearch, { data: dataSearch, isLoading: isLoadingSearch }] =
+    useGetGoogleSearchMutation({ fixedCacheKey: 'myCacheKey' });
   const { isClick, type } = useSelector((state) => state.search);
   const dispatch = useDispatch();
   const links = [

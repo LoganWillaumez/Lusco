@@ -1,11 +1,3 @@
-import { ResultAll } from './ResultAll';
-import {
-  searchDatas,
-  selectSubmitStatus,
-  useGetGoogleSearchMutation,
-} from '../app/api/getSearch';
-import { useSelector } from 'react-redux';
-import { truncateString } from '../utils/truncateString';
 export const ResultImages = ({ datas }) => {
   return (
     <div className='flex gap-6 flex-wrap justify-center h-full'>
@@ -31,10 +23,6 @@ export const ResultImages = ({ datas }) => {
           >
             {data.link.title}
           </a>
-
-          {/* <p className='text-white text-base'>
-              {truncateString(data.description, 100)}
-            </p> */}
         </div>
       ))}
     </div>

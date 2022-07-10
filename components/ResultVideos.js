@@ -1,10 +1,3 @@
-import { ResultAll } from './ResultAll';
-import {
-  searchDatas,
-  selectSubmitStatus,
-  useGetGoogleSearchMutation,
-} from '../app/api/getSearch';
-import { useSelector } from 'react-redux';
 import { truncateString } from '../utils/truncateString';
 import ReactPlayer from 'react-player';
 export const ResultVideos = ({ datas }) => {

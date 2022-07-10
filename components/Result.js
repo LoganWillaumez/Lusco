@@ -1,12 +1,10 @@
-import { Suspense, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { searchDatas, useGetGoogleSearchMutation } from '../app/api/getSearch';
+import { useGetGoogleSearchMutation } from '../app/api/getSearch';
 import { Spinner } from './Spinner';
-import { data } from '../data/tempData';
 import { Pagination } from './Pagination';
 import { ResultSearch } from './ResultSearch';
 import { toggleClick } from '../app/api/SearchSlice';
-import { ResultAll } from './ResultAll';
 import { ResultImages } from './ResultImages';
 import { ResultVideos } from './ResultVideos';
 export const Result = () => {
