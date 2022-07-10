@@ -63,7 +63,7 @@ export const Result = () => {
           ? "It's loading, please wait..."
           : `Page ${page} to ${
               Math.floor(dataRaw?.length / 10 - 1) === 1
-                ? '0'
+                ? '1'
                 : Math.floor(dataRaw?.length / 10 - 1)
             }`}
       </p>
