@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { toggleClick, handleChange } from '../app/api/SearchSlice';
+import { toggleClick, handleChange, resetPage } from '../app/api/SearchSlice';
 import { useGetGoogleSearchMutation } from '../app/api/getSearch';
 export const SearchBar = ({ getGoogleSearch }) => {
   const [isFirstClick, setIsFirstClick] = useState(false);
@@ -35,9 +35,16 @@ export const SearchBar = ({ getGoogleSearch }) => {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          searchTerm !== '' && getGoogleSearch({ type, searchTerm });
-          searchTerm !== '' && setIsFirstClick(true);
-          if (isClick === false || searchTerm !== '') dispatch(toggleClick());
+          if (searchTerm !== '') {
+            getGoogleSearch({ type, searchTerm });
+            setIsFirstClick(true);
+            if (isClick === false || isClick === null) {
+              dispatch(toggleClick());
+            } else {
+              console.log('ok');
+              dispatch(resetPage());
+            }
+          }
         }}
         className='flex gap-3 items-center w-[80vw] max-w-[500px]'
       >
@@ -70,12 +77,8 @@ export const SearchBar = ({ getGoogleSearch }) => {
                 onClick={(e) => {
                   const typeNew = e.target.value;
                   dispatch(handleChange({ name: 'type', value: typeNew }));
-                  dispatch(
-                    handleChange({
-                      name: 'page',
-                      value: 0,
-                    })
-                  );
+                  dispatch(resetPage());
+
                   searchTerm !== '' &&
                     getGoogleSearch({ type: typeNew, searchTerm });
                 }}

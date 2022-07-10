@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { changePage, handleChange } from '../app/api/SearchSlice';
+import { changePage, handleChange, resetPage } from '../app/api/SearchSlice';
 
 export const Pagination = ({ datas, dataRaw }) => {
   const dispatch = useDispatch();
@@ -38,7 +38,6 @@ export const Pagination = ({ datas, dataRaw }) => {
                 change: 'increment',
               })
             );
-            dispatch(resetPage());
           }}
         >
           {'>'}
