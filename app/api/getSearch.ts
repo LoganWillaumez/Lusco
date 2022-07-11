@@ -1,19 +1,17 @@
 import { useSelector } from 'react-redux';
-import { emptySplitApi } from '../api/emptySplitApi';
+import { emptySplitApi } from './emptySplitApi';
+
+interface queryTypes {
+  type: string;
+  searchTerm: string;
+}
 const searchApi = emptySplitApi.injectEndpoints({
   endpoints: (builder) => ({
     getGoogleSearch: builder.mutation({
-      /**
-       * Query for login user. Take the email and password on parameter, and send it to the server.
-       * @param {*} param0
-       * @returns
-       */
-      query: ({ type, searchTerm }) => {
+      query: ({ type, searchTerm }: queryTypes) => {
         return {
           url: `${type}/q=${searchTerm}&num=100`,
-          // url: `${type}/q=${searchTerm}&num=100&filter=0&start=${page * 10}`,
           method: 'GET',
-          // params: { num: 100 },
           contentType: 'application/json',
           headers: {
             'x-rapidapi-host': 'google-search3.p.rapidapi.com',

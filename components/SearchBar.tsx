@@ -1,19 +1,17 @@
 import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { toggleClick, handleChange, resetPage } from '../app/api/SearchSlice';
+import { toggleClick, handleChange, resetPage } from '../app/api/searchSlice';
 import { useGetGoogleSearchMutation } from '../app/api/getSearch';
+import { useAppDispatch, useAppSelector } from '../app/reduxHooks';
+import { links } from '../data/links';
+
 export const SearchBar = () => {
-  const [isFirstClick, setIsFirstClick] = useState(false);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [isFirstClick, setIsFirstClick] = useState<boolean>(false);
+  const [searchTerm, setSearchTerm] = useState<string>('');
   const [getGoogleSearch, { data: dataSearch, isLoading: isLoadingSearch }] =
     useGetGoogleSearchMutation({ fixedCacheKey: 'myCacheKey' });
-  const { isClick, type } = useSelector((state) => state.search);
-  const dispatch = useDispatch();
-  const links = [
-    { link: 'search', text: '🔎  All' },
-    { link: 'image', text: '📸  Images' },
-    { link: 'video', text: '📺  Videos' },
-  ];
+  const { isClick, type } = useAppSelector((state) => state.search);
+  const dispatch = useAppDispatch();
+
   return (
     <div
       className={`transition-all  flex flex-col items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 gap-1 md:gap-2 lg:gap-3 text-white z-30 ${

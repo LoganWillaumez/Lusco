@@ -1,9 +1,8 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { changePage } from '../app/api/SearchSlice';
-
+import { changePage } from '../app/api/searchSlice';
+import { useAppDispatch, useAppSelector } from '../app/reduxHooks';
 export const Pagination = ({ datas, dataRaw }) => {
-  const dispatch = useDispatch();
-  const { page } = useSelector((state) => state.search);
+  const dispatch = useAppDispatch();
+  const { page } = useAppSelector((state) => state.search);
   return (
     <div
       className={`text-white text-center flex gap-3 m-auto  absolute bottom-5 left-1/2 transform -translate-x-1/2 `}

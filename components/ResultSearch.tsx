@@ -1,10 +1,19 @@
+interface dataSearch {
+  link: string;
+  title: string;
+  description: string;
+  cite: {
+    domain: string;
+  };
+}
+
 import { truncateString } from '../utils/truncateString';
 export const ResultSearch = ({ datas }) => {
   return (
     <div className='flex flex-col gap-6 h-[50px]'>
-      {datas?.map((data, i) =>
+      {datas?.map((data: dataSearch, i: number) =>
         data.description ? (
-          <div className='flex flex-col' key={data + i}>
+          <div className='flex flex-col' key={data.link + i}>
             <a
               href={data.link}
               target='_blank'

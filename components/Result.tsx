@@ -4,16 +4,17 @@ import { useGetGoogleSearchMutation } from '../app/api/getSearch';
 import { Spinner } from './Spinner';
 import { Pagination } from './Pagination';
 import { ResultSearch } from './ResultSearch';
-import { toggleClick } from '../app/api/SearchSlice';
+import { toggleClick } from '../app/api/searchSlice';
 import { ResultImages } from './ResultImages';
 import { ResultVideos } from './ResultVideos';
+import { useAppDispatch, useAppSelector } from '../app/reduxHooks';
 export const Result = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [getGoogleSearch, { data: dataSearch, isLoading: isLoadingSearch }] =
     useGetGoogleSearchMutation({ fixedCacheKey: 'myCacheKey' });
-  const { isClick, page, type } = useSelector((state) => state.search);
-  const [dataFilter, setDataFilter] = useState([]);
-  const [dataRaw, setDataRaw] = useState([]);
+  const { isClick, page, type } = useAppSelector((state) => state.search);
+  const [dataFilter, setDataFilter] = useState<[]>([]);
+  const [dataRaw, setDataRaw] = useState<[]>([]);
   useEffect(() => {
     const dataQuery =
       type === 'search' || type === 'video'

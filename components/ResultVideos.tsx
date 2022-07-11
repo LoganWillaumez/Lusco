@@ -1,11 +1,16 @@
+interface dataVideos {
+  link: string;
+  title: string;
+}
+
 import { truncateString } from '../utils/truncateString';
 import ReactPlayer from 'react-player';
 export const ResultVideos = ({ datas }) => {
   return (
     <div className='flex justify-center'>
       <div className='flex gap-6 flex-wrap justify-center h-full w-fit max-w-fit'>
-        {datas?.map((data, i) => (
-          <div key={data + i}>
+        {datas?.map((data: dataVideos, i: number) => (
+          <div key={data.link + i}>
             <h3 className='text-[#8BB4F8] font-bold'>
               {truncateString(data.title, 40)}
             </h3>
