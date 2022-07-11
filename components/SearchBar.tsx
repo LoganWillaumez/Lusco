@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, MouseEvent } from 'react';
 import { toggleClick, handleChange, resetPage } from '../app/api/searchSlice';
 import { useGetGoogleSearchMutation } from '../app/api/getSearch';
 import { useAppDispatch, useAppSelector } from '../app/reduxHooks';
@@ -74,8 +74,8 @@ export const SearchBar = () => {
               <button
                 key={link}
                 value={link}
-                onClick={(e) => {
-                  const typeNew = e.target.value;
+                onClick={(e: MouseEvent<HTMLButtonElement>) => {
+                  const typeNew: string = (e.target as HTMLInputElement).value;
                   dispatch(handleChange({ name: 'type', value: typeNew }));
                   dispatch(resetPage());
 
